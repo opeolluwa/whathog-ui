@@ -1,6 +1,7 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import { Icon } from "@iconify/vue";
+import axios from "axios";
 export default defineComponent({
   components: {
     Icon
@@ -10,43 +11,55 @@ export default defineComponent({
     showSidebar: false,
     userTheme: "light-theme",
     newMessage: "",
+    awaitingBotResponse: false,
     messages: [
       {
         user: "bot",
         timestamp: new Date().toLocaleTimeString(),
         message: "Hello, I am a chatbot. How can I help you?"
       },
-      {
-        user: "me",
-        timestamp: new Date().toLocaleTimeString(),
-        message: "I want to buy a new phone"
-      },
-      {
-        user: "bot",
-        timestamp: new Date().toLocaleTimeString(),
-        message: "Hello, I am a chatbot. How can I help you? lordd"
-      },
-      {
-        user: "me",
-        timestamp: new Date().toLocaleTimeString(),
-        message: "I want to buy a new phone"
-      },
-      {
-        user: "bot",
-        timestamp: new Date().toLocaleTimeString(),
-        message: "Hello, I am a chatbot. How can I help you? lordd"
-      }
     ] as Array<any>
   }),
   methods: {
     // add message to the chat ui
-    sendMessage() {
+    async sendMessage() {
+      /**
+       * show loading component
+       * inject the message into the UI
+       * clear the input field 
+       * send the query to the API and await response
+       */
+      this.awaitingBotResponse = true;
       const payload: any = {
         user: "me",
         timestamp: new Date().getTime(),
         message: this.newMessage,
       };
+      const query = this.newMessage;
+      this.newMessage = "";
       this.messages.push(payload);
+      const { data: response } = await axios.post("/bot", {
+        query: this.newMessage
+      })
+      this.newMessage = "";
+      if (response) {
+        // hide loading action
+        this.awaitingBotResponse = false;
+        // this.res = response;
+
+        console.log(JSON.stringify(response.data.reply));
+
+        // add bot response to the chat ui
+        this.messages.push({
+          user: "bot",
+          timestamp: new Date().toLocaleTimeString(),
+          message: response.data.reply.text.split(":")[1]
+        })
+      }
+      // console.log("response ", response.data.response].data.text);
+
+
+
       console.log(JSON.stringify(payload));
 
       this.newMessage = "";
@@ -103,20 +116,18 @@ export default defineComponent({
           <template v-if="message.user === 'bot'">
             <div class="message__component">
               <Icon icon="mdi:robot-outline" class="bot__icon" />
-
               <div class="message__box bot__message">
                 <div class="message__content">
                   <div>{{ message.message }}</div>
                 </div>
               </div>
             </div>
-            <!--  <small class="message__time">
-              {{ message.timestamp }}
-            </small> -->
           </template>
         </div>
+        <div class="dot-pulse" v-show="awaitingBotResponse" style="margin-left: 15px; margin-top: 0;"></div>
+
       </div>
-      <form action="" id="message__box" @submit="sendMessage">
+      <form action="" id="message__box" @submit.prevent="sendMessage">
         <div id="input__field">
           <input type="text" placeholder="type a message" v-model="newMessage">
           <Icon icon="mdi:send" id="send__icon" @click="sendMessage" />
@@ -273,5 +284,88 @@ main {
   background-color: var(--white);
   color: var(--dark-text);
   border-radius: 25px 8px 25px 25px;
+}
+
+.dot-pulse {
+  position: relative;
+  left: -9999px;
+  width: 10px;
+  height: 10px;
+  border-radius: 5px;
+  background-color: var(--secondary);
+  color: var(--secondary);
+  box-shadow: 9999px 0 0 -5px;
+  animation: dot-pulse 1.5s infinite linear;
+  animation-delay: 0.25s;
+}
+
+.dot-pulse::before,
+.dot-pulse::after {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  width: 10px;
+  height: 10px;
+  border-radius: 5px;
+  background-color: var(--secondary);
+  color: var(--secondary);
+}
+
+.dot-pulse::before {
+  box-shadow: 9984px 0 0 -5px;
+  animation: dot-pulse-before 1.5s infinite linear;
+  animation-delay: 0s;
+}
+
+.dot-pulse::after {
+  box-shadow: 10014px 0 0 -5px;
+  animation: dot-pulse-after 1.5s infinite linear;
+  animation-delay: 0.5s;
+}
+
+@keyframes dot-pulse-before {
+  0% {
+    box-shadow: 9984px 0 0 -5px;
+  }
+
+  30% {
+    box-shadow: 9984px 0 0 2px;
+  }
+
+  60%,
+  100% {
+    box-shadow: 9984px 0 0 -5px;
+  }
+}
+
+@keyframes dot-pulse {
+  0% {
+    box-shadow: 9999px 0 0 -5px;
+  }
+
+  30% {
+    box-shadow: 9999px 0 0 2px;
+  }
+
+  60%,
+  100% {
+    box-shadow: 9999px 0 0 -5px;
+  }
+}
+
+@keyframes dot-pulse-after {
+  0% {
+    box-shadow: 10014px 0 0 -5px;
+  }
+
+  30% {
+    box-shadow: 10014px 0 0 2px;
+  }
+
+  60%,
+  100% {
+    box-shadow: 10014px 0 0 -5px;
+  }
 }
 </style>

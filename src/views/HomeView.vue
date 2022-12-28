@@ -20,7 +20,7 @@ export default defineComponent({
   <button>
     <img src="@/assets/mic.svg" alt="voice search" />
   </button>
-  <AppFab icon="mdi:forum-outline"  route="bot"/>
+  <AppFab icon="mdi:robot-outline" route="bot" />
 </template>
 
 <style scoped>
@@ -139,4 +139,7 @@ img {
   display: block;
   margin: 0 auto;
 }
+
+
+
 </style>

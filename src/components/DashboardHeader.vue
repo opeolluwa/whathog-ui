@@ -51,7 +51,7 @@ export default defineComponent({
     <div class="header__nav__mobile">
       <Icon icon="mdi:menu" @click="$emit('open-sidebar')" />
       <div id="current__route">
-        <RouterLink :to="{ name: 'home' }">{{ currentRouteName }}</RouterLink>
+        <div >{{ currentRouteName }}</div>
       </div>
     </div>
 
