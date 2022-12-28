@@ -44,7 +44,6 @@ export default defineComponent({
   -webkit-box-shadow: -3px -3px 27px 3px rgba(0, 0, 0, 0.3);
   -moz-box-shadow: -3px -3px 27px 3px rgba(0, 0, 0, 0.3);
   z-index: 1200;
-  display: none;
 }
 
 .fab:hover {

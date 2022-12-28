@@ -12,93 +12,28 @@ export default defineComponent({
     showMobileMenu: true,
     routes: [
       {
-        name: "Dashboard",
+        name: "Home",
         icon: "mdi:home-variant-outline",
         path: "home",
       },
       {
-        name: "notification",
-        icon: "mdi:bell-outline",
-        path: "notification",
+        name: "Bot",
+        icon: "mdi:robot-outline",
+        path: "bot",
       },
       {
-        name: "emails",
-        icon: "mdi:email-outline",
-        path: "emails",
-        children: [
-          {
-            // get all emails
-            path: "emails",
-            name: "inbox",
-          },
-          {
-            // create new email
-            name: "new",
-            path: "new-email",
-          },
-          //TODO:create category
-          {
-            name: "important",
-            path: "important-email",
-          },
-          {
-            name: "starred",
-            path: "starred-email",
-          },
-          {
-            name: "trashed",
-            path: "trashed-email",
-          },
-        ],
-      },
-
-      {
-        name: "notes",
-        icon: "mdi:note-edit-outline",
-        path: "all-notes",
-        children: [
-          {
-            name: "all entries",
-            path: "all-notes",
-          },
-          {
-            name: "new entry",
-            path: "add-note",
-          },
-        ],
+        name: "Faq",
+        icon: "mdi:help-circle-outline",
+        path: "faq",
       },
       {
-        name: "task",
-        icon: "mdi:format-list-checks",
-        path: "task",
-        children: [
-          {
-            name: "all task",
-            path: "all-task",
-          },
-          {
-            name: "new task",
-            path: "add-task",
-          },
-          /* {
-           name: "edit task",
-           path: "edit-task",
-         },  */
-        ],
-      },
-      {
-        name: "profile",
-        icon: "mdi:account",
-        path: "profile",
+        name: "About",
+        icon: "mdi:information-outline",
+        path: "about",
       },
       {
         name: "settings",
         icon: "mdi:cog-outline",
-        path: "settings",
-      },
-      {
-        name: "help",
-        icon: "mdi:help-circle-outline",
         path: "settings",
       },
     ],
@@ -174,11 +109,7 @@ export default defineComponent({
       <div id="nav__header">
         <div id="avatar">
           <!--icon-->
-          <img
-            src="@/assets/img/illustration/default_user.png"
-            alt="avatar"
-            @click="goToProfile"
-          />
+          <img src="@/assets/img/illustration/default_user.png" alt="avatar" @click="goToProfile" />
           <!---name and email-->
           <div id="user">
             <h3>{{ fullname }}</h3>
@@ -190,56 +121,19 @@ export default defineComponent({
       <div id="routes">
         <!--the links-->
         <div v-for="route in routes.sort()" :key="route.name">
-          <!--use  this templates bases on if a route has children routes-->
-          <template v-if="route.children">
-            <div class="nav__link__parent link__item dropdown capitalize">
-              <Icon :icon="route.icon" />
-              <span>{{ route.name }}</span>
-              <Icon icon="mdi:menu-down" />
-            </div>
-            <ul v-if="route.children" class="children__routes">
-              <li
-                v-for="child in route.children"
-                class="child__route"
-                @click="closeSidebar"
-                :class="[
-                  // route.name === currentRouteName ? 'active' : '',
-                  'capitalize',
-                ]"
-              >
-                <RouterLink
-                  @click="closeSidebar"
-                  :to="{ name: child.path }"
-                  :key="child.name"
-                >
-                  <span class="capitalize">{{
-                    child.name.replaceAll("-", " ")
-                  }}</span>
-                </RouterLink>
-              </li>
-            </ul>
-          </template>
-          <!--use this template if -->
-          <template v-else>
-            <!-- <hr class=divider> -->
-            <RouterLink
-              :to="{ name: route.path }"
-              class="link__item"
-              :class="[
-                route.name === currentRouteName ? 'active' : '',
-                'capitalize',
-              ]"
-              @click="closeSidebar"
-            >
-              <Icon :icon="route.icon" />
-              <span>{{ route.name }}</span>
-            </RouterLink>
-          </template>
+          <!-- <hr class=divider> -->
+          <RouterLink :to="{ name: route.path }" class="link__item" :class="[
+  route.name === currentRouteName ? 'active' : '',
+  'capitalize',
+]" @click="closeSidebar">
+            <Icon :icon="route.icon" />
+            <span>{{ route.name }}</span>
+          </RouterLink>
         </div>
         <!-- the last out logout button-->
         <div class="link__item" @click="logout" id="logout__btn">
           <Icon icon="mdi:logout" />
-          <span>logout</span>
+          <span>Exit</span>
         </div>
       </div>
     </div>

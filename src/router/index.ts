@@ -1,38 +1,45 @@
 import { createRouter, createWebHistory } from "vue-router";
 import BaseLayout from "@/views/IndexView.vue";
-import { useAuthStore } from "@/stores/auth";
+import HomeView from "@/views/HomeView.vue";
 
-//routes
-import emailRoutes from "./email";
-import notesRoutes from "./notes";
-import authRoutes from "./auth";
-import todoRoutes from "./task";
-import notificationRoutes from "./notification";
-import profileRoutes from "./profile";
-import settingsRoutes from "./settings";
-import homeRoutes from "./home";
+
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
-    authRoutes,
     {
-      path: "/u",
+      path: "/",
       component: BaseLayout,
-      meta: {
-        requiresAuth: true,
-      },
       children: [
-        homeRoutes,
-        settingsRoutes,
-        profileRoutes,
-        notificationRoutes,
-        emailRoutes,
-        notesRoutes,
-        todoRoutes,
-      ],
-      //add navigation guards here
+        {
+          path: "",
+          name: "home",
+          component: HomeView,
+        },
+        {
+          path: "/bot",
+          name: "bot",
+          component: () => import("@/views/Bot.vue"),
+        },
+        {
+          path: "/faq",
+          name: "faq",
+          component: () => import("@/views/Faq.vue"),
+        },
+        {
+          path: "/about",
+          name: "about",
+          component: () => import("@/views/About.vue"),
+        },
+        {
+          path: "/settings",
+          name: "settings",
+          component: () => import("@/views/Settings.vue"),
+        },
+      ]
     },
+
+
     {
       path: "/:pathMatch(.*)*",
       name: "404",

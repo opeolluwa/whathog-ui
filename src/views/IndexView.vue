@@ -5,7 +5,6 @@ import ViewLayoutVue from "@/components/ViewLayout.vue";
 import { defineComponent } from "vue";
 import { useAuthStore } from "@/stores/auth";
 import { mapActions, mapState } from "pinia";
-import DashboardBottomNav from "@/components/DashboardBottomNav.vue";
 import { useDarkMode } from "@/stores/theme";
 import axios from "axios";
 import router from "@/router";
@@ -14,56 +13,12 @@ export default defineComponent({
     DashboardSidebar: DashboardSidebarVue,
     DashboardHeader: DashboardHeaderVue,
     ViewLayout: ViewLayoutVue,
-    DashboardBottomNav,
   },
   data: () => ({
     crumbs: ["Home", "Category", "Sub category"],
     showSidebar: false,
     userTheme: "light-theme",
   }),
-  /**
-   * before entering the route we check if the user is logged in
-   * to do this, try to get the token from the  local storage
-   * if token does not exists, redirect to login page
-   * else use the token to make request to the server, if the server return a valid response, enter this routes else redirect to login page
-   */
-  /*  beforeRouteEnter(to, from, next) {
-     async function checkBearerTokenValidity() {
-     const token = localStorage.getItem("token");
-     if (!token) {
-       next("/login");
-     } else {
-       //try to get the user information from the server
-       try {
-         axios
-           .get("/auth/me", {
-             headers: { Authorization: `Bearer ${token}` },
-           })
-           .then((severResponse) => {
-             const responseData = severResponse.data;
- 
-             if (responseData.success) {
-               next(() => {
-                 console.log("user is logged in ", from.name, to.name);
-                 const desiredRoute = String(to.name);
-                 router.push({ name: desiredRoute });
-               });
-             } else {
-               localStorage.removeItem("token");
-               router.push({ name: "auth" });
-               console.log("something bad happened ");
-             }
-           });
- 
-         // console.log({ response });
-       } catch (error: any) {
-         console.log({ error: error.message });
-         console.log("something bad happened ");
-       }
-     }
-     }
-     checkBearerTokenValidity();
-   }, */
 
 
   computed: {
@@ -151,8 +106,6 @@ export default defineComponent({
           </template>
         </ViewLayout>
       </div>
-      <!--bottom navigation for mobile only-->
-      <DashboardBottomNav @close-sidebar="showSidebar = false" @toggle-theme="toggleColorTheme" class="d-none" />
     </main>
   </div>
 </template>

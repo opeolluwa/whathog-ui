@@ -1,6 +1,6 @@
 <template>
   <div class="view">
-  <!--   <div v-if="!isHomePage" class="view__header">
+    <!--   <div v-if="!isHomePage" class="view__header">
       <Icon icon="mdi:arrow-left-thin" @click="goBack" />
       <Icon icon="mdi:arrow-right-thin" @click="goForward" class="d-none" />
     </div> -->
@@ -27,7 +27,7 @@
 }
 
 /**set top padding for first child element of view layout */
-.view__header> {
+.view__header > {
   margin-bottom: 45px;
 }
 
@@ -49,27 +49,27 @@
 </style>
 
 <script lang="ts">
-import { defineComponent } from "vue"
+import { defineComponent } from "vue";
 import { Icon } from "@iconify/vue";
 export default defineComponent({
   name: "ViewLayout",
   components: {
-    Icon
+    Icon,
   },
   computed: {
     //  * see ifthe current route is the home page return true in not return false
     isHomePage() {
-      return this.$route.path === "/u"
-    }
+      return this.$route.path === "/u";
+    },
   },
   methods: {
     //  * go back to the previous page
     goBack() {
-      this.$router.go(-1)
+      this.$router.go(-1);
     },
     goForward() {
-      this.$router.go(1)
-    }
-  }
+      this.$router.go(1);
+    },
+  },
 });
 </script>

@@ -107,8 +107,7 @@ export const useAuthStore = defineStore("authStore", {
       (async function removeAuthToken() {
         await storeData({ key: "authorizationToken", value: "" }).then(() => {
           router.push({ name: "login" });
-        })
-
+        });
       })();
       //send the server to the server to be blacklisted
       //TODO
@@ -125,8 +124,9 @@ export const useAuthStore = defineStore("authStore", {
         const AUTH_TOKEN_FOR_MOBILE = await getStoredData("authorizationToken");
         const { data: response } = await axios.get("/auth", {
           headers: {
-            Authorization: `Bearer ${this.authorizationToken || AUTH_TOKEN_FOR_MOBILE
-              }`,
+            Authorization: `Bearer ${
+              this.authorizationToken || AUTH_TOKEN_FOR_MOBILE
+            }`,
           },
         });
         //if the request is successful, store the data and
@@ -151,8 +151,9 @@ export const useAuthStore = defineStore("authStore", {
         const { data: response } = await axios.put("/auth/me", {
           ...payload,
           headers: {
-            Authorization: `Bearer ${this.authorizationToken || AUTH_TOKEN_FOR_MOBILE
-              }`,
+            Authorization: `Bearer ${
+              this.authorizationToken || AUTH_TOKEN_FOR_MOBILE
+            }`,
           },
         });
         //if the request is successful, store the data and
@@ -175,8 +176,9 @@ export const useAuthStore = defineStore("authStore", {
           { ...payload },
           {
             headers: {
-              Authorization: `Bearer ${this.authorizationToken || AUTH_TOKEN_FOR_MOBILE
-                }`,
+              Authorization: `Bearer ${
+                this.authorizationToken || AUTH_TOKEN_FOR_MOBILE
+              }`,
             },
           }
         );

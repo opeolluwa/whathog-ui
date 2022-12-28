@@ -72,7 +72,7 @@ export const useEmailsStore = defineStore("emailStore", {
         console.log(JSON.stringify(response));
         //upadate the store
         await this.fetchAllEmails();
-      } catch (error) { }
+      } catch (error) {}
     },
 
     async unStarEmail(emailId: String) {
@@ -80,14 +80,17 @@ export const useEmailsStore = defineStore("emailStore", {
         const AUTH_TOKEN = authStore.getAuthToken
           ? authStore.getAuthToken
           : await getStoredData("authorizationToken");
-        const { data: response } = await axios.put(`/emails/un-star/${emailId}`, {
-          headers: { Authorization: `Bearer ${AUTH_TOKEN}` },
-        });
+        const { data: response } = await axios.put(
+          `/emails/un-star/${emailId}`,
+          {
+            headers: { Authorization: `Bearer ${AUTH_TOKEN}` },
+          }
+        );
         console.log("the note id is ", emailId);
         console.log(JSON.stringify(response));
         //upadate the store
         await this.fetchAllEmails();
-      } catch (error) { }
+      } catch (error) {}
     },
 
     /**
@@ -97,17 +100,14 @@ export const useEmailsStore = defineStore("emailStore", {
      */
     async toggleStar(isEmailStarred: boolean, emailId: String) {
       if (isEmailStarred === true) {
-        await this.unStarEmail(emailId)
-
-      }
-      else {
-        await this.starEmail(emailId)
-
+        await this.unStarEmail(emailId);
+      } else {
+        await this.starEmail(emailId);
       }
     },
     /**
      * fetch email by id
-     * 
+     *
      */
     async fetchById(emailId: String) {
       try {
@@ -119,7 +119,7 @@ export const useEmailsStore = defineStore("emailStore", {
         });
         return response;
         console.log(JSON.stringify(response));
-      } catch (error) { }
+      } catch (error) {}
     },
 
     async deleteNote(emailId: String) {
@@ -131,7 +131,7 @@ export const useEmailsStore = defineStore("emailStore", {
           headers: { Authorization: `Bearer ${AUTH_TOKEN}` },
         });
         console.log(JSON.stringify(response));
-      } catch (error) { }
+      } catch (error) {}
     },
   },
 });

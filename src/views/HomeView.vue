@@ -1,107 +1,142 @@
 <script lang="ts">
-import AppCard from "@/components/AppCard.vue";
-import Quotes from "@/components/AppQuotes.vue";
-import greetings from "@/components/greetings";
-import { useAuthStore } from "@/stores/auth";
-import { mapState } from "pinia";
 import { defineComponent } from "vue";
-import AppListItem from "../components/AppListItem.vue";
+import AppFab from "@/components/AppFab.vue";
 
 export default defineComponent({
   name: "HomeView",
   components: {
-    AppCard,
-    Quotes,
-    AppListItem,
+    AppFab,
   },
   data: () => ({
     showModal: false,
-    greetings,
   }),
-  computed: {
-    //get the user from the store
-    ...mapState(useAuthStore, { user: "userInformation" }),
-    username() {
-      return this.user?.username || "";
-    },
-  },
+
 });
 </script>
 
 <template>
-  <!--greetings-->
-  <div class="d-sm-none">
-    <h3>
-      Hi <strong style="text-transform: capitalize">{{ username }}! 😊 </strong>
-    </h3>
-    <small>{{ greetings }}</small>
-  </div>
-
-  <!--analytics overview-->
-  <div class="analytics-overview">
-    <AppListItem> 234 </AppListItem>
-
-    <AppListItem> 234 </AppListItem>
-
-    <AppListItem> 234 </AppListItem>
-  </div>
-  <!--quotes and analytics header-->
-  <div id="header">
-    <AppCard id="quotes-container">
-      <Quotes :duration="120" />
-    </AppCard>
-  </div>
+  <h1>Voice Search</h1>
+  <h2>Long press the button to speak</h2>
+  <button>
+    <img src="@/assets/mic.svg" alt="voice search" />
+  </button>
+  <AppFab icon="mdi:forum-outline"  route="bot"/>
 </template>
 
 <style scoped>
-#quotes-container {
+* {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  font-family: "HelveticaNeueLight", "HelveticaNeue-Light",
+    "Helvetica Neue Light", "HelveticaNeue", "Helvetica Neue",
+    "TeXGyreHerosRegular", "Helvetica", "Tahoma", "Geneva", "Arial", sans-serif;
+  font-weight: 300;
+  background: #f7f7f7 url(@/assets/img/geometry.png) 0 0 no-repeat;
+  background-size: cover;
+  color: #333;
+}
+
+footer {
+  font-size: 0.75em;
+  color: silver;
+  position: fixed;
+  bottom: 1em;
+  left: 1em;
+}
+
+footer a {
+  color: #f80;
+}
+
+header {
+  margin: 2em 0;
+  text-align: center;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
+  text-rendering: optimizeLegibility;
+  text-align: center;
+}
+
+h1 {
+  font-weight: 400;
+  font-size: 2.3em;
+}
+
+h2 {
+  font-weight: 300;
+  margin-top: 0.5em;
+  margin-top: 0;
+}
+
+section {
+  margin: 1.5em auto;
+  width: 400px;
+}
+
+button {
+  display: block;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  width: 200px;
+  height: 200px;
+  border: 0;
+  border-radius: 50%;
+  padding: 0.7em 1em;
+  margin: 4em auto 3em;
+  text-align: center;
+  color: #fff;
+  box-shadow: 2px 5px 30px rgba(73, 22, 177, 0.45);
+
+  will-change: transform, filter;
+  transition: all 0.3s ease-out;
+}
+
+button:hover {
+  transform: scale(0.92);
+}
+
+button:active {
+  filter: brightness(0.8);
+}
+
+button:focus {
+  outline: 0;
+}
+
+.fa {
+  display: inline-block;
+  font: normal normal normal 14px/1 FontAwesome;
+  font-size: 1.3em;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin-left: 10px;
+}
+
+.fa-github::before {
+  content: "\f09b";
+}
+
+img {
+  width: 100px;
   display: flex;
-  flex-direction: column;
+  align-items: center;
   justify-content: center;
-  align-items: center;
-}
-
-.analytics-overview {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  justify-content: space-between;
-  gap: 40px;
-  align-items: center;
-  display: none;
-}
-
-.analytics-overview > div {
-  border-radius: 5px;
-  min-height: 75px;
-}
-
-#header {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  column-gap: 35px;
-  justify-content: space-between;
-  margin-bottom: 20px;
-}
-
-.card {
-  text-align: unset;
-}
-
-/**--------------mobile screen navigation---------- */
-@media screen and (max-width: 768px) {
-  #header {
-    grid-template-columns: repeat(1, 1fr);
-    margin-bottom: 45px;
-  }
-
-  .analytics-overview {
-    column-gap: 5px;
-    margin: 20px 0 10px;
-    display: none;
-  }
-
-  .analytics-overview > div {
-    min-height: 40px;
-  }
+  display: block;
+  margin: 0 auto;
 }
 </style>
