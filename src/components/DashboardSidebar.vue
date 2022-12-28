@@ -3,6 +3,7 @@ import { Icon } from "@iconify/vue";
 import { defineComponent } from "vue";
 import { useAuthStore } from "@/stores/auth";
 import { mapActions, mapState } from "pinia";
+import { App } from '@capacitor/app';
 export default defineComponent({
   name: "AppNavigation",
   components: {
@@ -82,6 +83,9 @@ export default defineComponent({
       this.logoutRequest();
     },
 
+    async exitApp() {
+      await App.exitApp();
+    },
     closeSidebar() {
       /**
        * check if the device is mobile
@@ -131,7 +135,7 @@ export default defineComponent({
           </RouterLink>
         </div>
         <!-- the last out logout button-->
-        <div class="link__item" @click="logout" id="logout__btn">
+        <div class="link__item" @click="exitApp" id="logout__btn">
           <Icon icon="mdi:logout" />
           <span>Exit</span>
         </div>

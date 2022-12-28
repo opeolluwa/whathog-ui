@@ -10,13 +10,14 @@
     "build:apk": "npm run build && npm run build:sync && npm run build:compile",
     "build:sync": "npx cap sync",
     "build:compile": "npx cap open android",
-    "build:icon": "cordova-res --skip-config --copy",
+    "build:icon": "npx cordova-res --skip-config --copy",
     "dev": "vite",
     "preview": "vite preview --port 4173",
     "type-check": "vue-tsc --noEmit"
   },
   "dependencies": {
     "@capacitor/android": "^4.3.0",
+    "@capacitor/app": "^4.1.1",
     "@capacitor/core": "^4.3.0",
     "@capacitor/preferences": "^4.0.1",
     "@capacitor/splash-screen": "^4.1.1",

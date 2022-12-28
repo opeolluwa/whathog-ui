@@ -100,7 +100,7 @@ export default defineComponent({
       <!-- the header-->
       <!--inject all views here-->
       <div>
-        <div id="conversation" v-for="message in messages">
+        <div id="conversation" v-for="message in messages" style="padding-bottom:25px">
           <!-- {{ messages }} -->
           <template v-if="message.user === 'me'">
             <div class="message__component" style="flex-direction: row-reverse;">

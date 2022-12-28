@@ -29,7 +29,7 @@ const NODE_ENV = import.meta.env.MODE;
 
 console.log({ BASE_URL });
 axios.defaults.timeout = 25000;
-axios.defaults.baseURL = "http://localhost:3415/api/v1";
+axios.defaults.baseURL = "https://whathog.onrender.com/api/v1";
 // axios.defaults.baseURL = "https://nitride.onrender.com/api/v1";
 axios.defaults.headers.common["Authorization"] = `Bearer ${localStorage.getItem(
   "token"
