@@ -103,8 +103,6 @@ section {
 
 button {
   display: block;
-  -webkit-appearance: none;
-  -moz-appearance: none;
   width: 200px;
   height: 200px;
   border: 0;

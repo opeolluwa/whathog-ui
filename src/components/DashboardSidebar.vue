@@ -1,8 +1,6 @@
 <script lang="ts">
 import { Icon } from "@iconify/vue";
 import { defineComponent } from "vue";
-import { useAuthStore } from "@/stores/auth";
-import { mapActions, mapState } from "pinia";
 import { App } from '@capacitor/app';
 export default defineComponent({
   name: "AppNavigation",
@@ -18,12 +16,7 @@ export default defineComponent({
         path: "home",
       },
       {
-        name: "Bot",
-        icon: "mdi:robot-outline",
-        path: "bot",
-      },
-      {
-        name: "Faq",
+        name: "FAQ",
         icon: "mdi:help-circle-outline",
         path: "faq",
       },
@@ -31,6 +24,12 @@ export default defineComponent({
         name: "About",
         icon: "mdi:information-outline",
         path: "about",
+      },
+
+      {
+        name: "Chat with a Bot",
+        icon: "mdi:robot-outline",
+        path: "bot",
       },
       {
         name: "settings",
@@ -40,16 +39,6 @@ export default defineComponent({
     ],
   }),
   computed: {
-    ...mapState(useAuthStore, ["userInformation", "isLoading"]),
-    fullname() {
-      return String(this.userInformation?.fullname) || "Jane Doe";
-    },
-    username() {
-      return String(this.userInformation?.username) || "username";
-    },
-    email() {
-      return String(this.userInformation?.email) || "jane@mailer.com";
-    },
     currentRouteName() {
       const route = this.$route.name;
       return String(route) || "360 Devs";
@@ -76,12 +65,6 @@ export default defineComponent({
     }
   },
   methods: {
-    //get the logout action from the store
-    ...mapActions(useAuthStore, ["logoutRequest"]),
-    logout() {
-      //exec the call to the store mapped logout action
-      this.logoutRequest();
-    },
 
     async exitApp() {
       await App.exitApp();
@@ -109,18 +92,6 @@ export default defineComponent({
 <template>
   <nav>
     <div id="nav__content">
-      <!-- nave header-->
-      <div id="nav__header">
-        <div id="avatar">
-          <!--icon-->
-          <img src="@/assets/img/illustration/default_user.png" alt="avatar" @click="goToProfile" />
-          <!---name and email-->
-          <div id="user">
-            <h3>{{ fullname }}</h3>
-            <small>{{ email }}</small>
-          </div>
-        </div>
-      </div>
 
       <div id="routes">
         <!--the links-->
@@ -145,6 +116,10 @@ export default defineComponent({
 </template>
 
 <style scoped>
+#nav__content {
+  padding-top: 1rem;
+}
+
 #nav__header {
   display: none;
 }
