@@ -1,6 +1,7 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import AppFab from "@/components/AppFab.vue";
+import "../web-speech";
 
 export default defineComponent({
   name: "HomeView",
@@ -10,14 +11,27 @@ export default defineComponent({
   data: () => ({
     showModal: false,
   }),
-
+  methods: {
+    keelItWithFire() {
+      let target =
+        document.querySelector(".sithLord") as unknown as HTMLElement
+      target.style.display = "none";
+    }
+  }
 });
 </script>
 
 <template>
   <h1>Voice Search</h1>
-  <h2>Long press the button to speak</h2>
-  <button>
+  <h2 class="sithLord">Long press the button to speak</h2>
+  <div class="output-you">
+    you
+  </div>
+  <div class="output-bot">
+    bot
+  </div>
+  <button @click="keelItWithFire" id="speak__button">
+
     <img src="@/assets/mic.svg" alt="voice search" />
   </button>
   <AppFab icon="mdi:robot-outline" route="bot" />
@@ -139,7 +153,4 @@ img {
   display: block;
   margin: 0 auto;
 }
-
-
-
 </style>

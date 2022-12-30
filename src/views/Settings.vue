@@ -1,20 +1,6 @@
 <template>
   <div id="settings__page">
-    <h3>Connect social account</h3>
-    <div id="social__account">
-      <div class="social__account__icon">
-        <img src="@/assets/icons/twitter.png" alt="twitter" />
-        <span>Twitter</span>
-      </div>
-      <div class="social__account__icon">
-        <img src="@/assets/icons/google.png" alt="googlr" />
-        <span>Google</span>
-      </div>
-      <div class="social__account__icon">
-        <img src="@/assets/icons/github.png" alt="facebook" />
-        <span>Github</span>
-      </div>
-    </div>
+    <h3>Change language</h3>
   </div>
 </template>
 
@@ -33,6 +19,7 @@ export default defineComponent({
 #settings__page h3 {
   font-weight: 500;
 }
+
 #social__account {
   margin: 10px 0;
   display: flex;
@@ -53,6 +40,7 @@ export default defineComponent({
   margin: 5px 0;
   align-items: center;
 }
+
 #social__account .social__account__icon:first-child {
   margin-top: 0;
   padding-top: 3px;

@@ -3,11 +3,6 @@ import DashboardSidebarVue from "@/components/DashboardSidebar.vue";
 import DashboardHeaderVue from "@/components/DashboardHeader.vue";
 import ViewLayoutVue from "@/components/ViewLayout.vue";
 import { defineComponent } from "vue";
-import { useAuthStore } from "@/stores/auth";
-import { mapActions, mapState } from "pinia";
-import { useDarkMode } from "@/stores/theme";
-import axios from "axios";
-import router from "@/router";
 export default defineComponent({
   components: {
     DashboardSidebar: DashboardSidebarVue,
@@ -16,62 +11,15 @@ export default defineComponent({
   },
   data: () => ({
     crumbs: ["Home", "Category", "Sub category"],
+    defaultLanguageCode: "en",
+    defaultPageLanguageCode: "en",
     showSidebar: false,
     userTheme: "light-theme",
   }),
-
-
-  computed: {
-    ...mapState(useAuthStore, ["authorizationToken", "userInformation"]),
-    ...mapState(useDarkMode, ["enabledDarkMode"]),
-
-    //breadcrumb
-  },
-  created() {
-    this.makeAuthRequest();
-  },
-  mounted() {
-    this.showSidebar = window.matchMedia("(max-width: 400px)").matches
-      ? false
-      : true;
-
-    //the dark theme configuration
-    let localTheme = localStorage.getItem("theme"); //gets stored theme value if any
-    document.documentElement.setAttribute("data-theme", localTheme as string); // updates the data-theme attribute
-
-    //  * get the refresh token every 20 minutes
-    const refreshToken = () => {
-      this.refreshToken();
-    };
-    window.setInterval(refreshToken, 1000 * 20 * 60);
-  },
   methods: {
-    ...mapActions(useAuthStore, {
-      getUser: "getUserInformation",
-      refreshToken: "getRefreshToken",
-    }),
-    ...mapActions(useDarkMode, ["toggleColorTheme"]),
-    getTheme() {
-      return localStorage.getItem("user-theme");
-    },
-    setTheme(theme: string) {
-      localStorage.setItem("user-theme", theme);
-      this.userTheme = theme;
-      document.documentElement.className = theme;
-    },
 
-    //track bread crumb
-    selected(crumb: any) {
-      console.log(crumb);
-    },
-    /**
-     * @function makeAuthRequest - make request to the server to get the user information
-     * @returns {userInformation} - returns the user information
-     * @param {authorizationToken} - the authorization token
-     */
-    makeAuthRequest() {
-      const token = String(this.authorizationToken);
-      this.getUser(token);
+    languageSelectedHandler(info: any) {
+      console.log(info);
     },
     isDeviceMobile() {
       /**
@@ -92,14 +40,13 @@ export default defineComponent({
 <template>
   <div class="container">
     <!-- the side bar-->
-    <DashboardSidebar v-show="showSidebar" @close-sidebar="showSidebar = false"
-      :class="{ dark__mode: enabledDarkMode }" />
+    <DashboardSidebar v-show="showSidebar" @close-sidebar="showSidebar = false" />
     <main>
       <!-- the header-->
       <DashboardHeader @open-sidebar="showSidebar = !showSidebar" />
 
       <!--inject all views here-->
-      <div id="view__box" :class="{ dark__mode: enabledDarkMode }">
+      <div id="view__box">
         <ViewLayout>
           <template #content>
             <RouterView />
