@@ -24,13 +24,9 @@ export default defineComponent({
 <template>
   <h1>Voice Search</h1>
   <h2 class="sithLord">Long press the button to speak</h2>
-  <div class="output-you">
-    you
-  </div>
-  <div class="output-bot">
-    bot
-  </div>
-  <button @click="keelItWithFire" id="speak__button">
+
+
+  <button  id="speak__button">
 
     <img src="@/assets/mic.svg" alt="voice search" />
   </button>
