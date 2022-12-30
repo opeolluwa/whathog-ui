@@ -17,7 +17,7 @@ const toastOptions: PluginOptions = {
   // You can set your default options here
 };
 
-// import "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css";
+import vGoogleTranslate from "v-google-translate";
 
 //google auth
 import GoogleLogin from "vue3-google-login";
@@ -56,13 +56,15 @@ const timeagoOptions = {
 // import { createAuth0 } from "@auth0/auth0-vue";
 const app = createApp(App);
 
-export {};
+export { };
 declare global {
   interface Navigator {
     setAppBadge: Promise<void>;
   }
   interface Window {
     deferredPrompt: any;
+    SpeechRecognition: any;
+    webkitSpeechRecognition: any
   }
 }
 
@@ -77,6 +79,7 @@ app.use(createPinia());
 app.use(router);
 app.use(timeago, timeagoOptions);
 app.use(Toast, toastOptions);
+app.use(vGoogleTranslate);
 // app.use(VueDarkMode)
 app.use(GoogleLogin, {
   clientId:

@@ -16,6 +16,7 @@
     "type-check": "vue-tsc --noEmit"
   },
   "dependencies": {
+    "@capacitor-community/speech-recognition": "^2.1.0",
     "@capacitor/android": "^4.3.0",
     "@capacitor/app": "^4.1.1",
     "@capacitor/core": "^4.3.0",
@@ -31,6 +32,7 @@
     "md-editor-v3": "^2.3.0",
     "pinia": "^2.0.21",
     "register-service-worker": "^1.7.2",
+    "v-google-translate": "^1.0.1",
     "vue": "^3.2.45",
     "vue-chartjs": "^4.1.1",
     "vue-easy-spinner": "^0.1.0",

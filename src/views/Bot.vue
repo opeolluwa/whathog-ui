@@ -39,7 +39,7 @@ export default defineComponent({
       this.newMessage = "";
       this.messages.push(payload);
       const { data: response } = await axios.post("/bot", {
-        query: this.newMessage
+        query
       })
       this.newMessage = "";
       if (response) {

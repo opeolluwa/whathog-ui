@@ -37,29 +37,9 @@ const router = createRouter({
           component: () => import("@/views/Settings.vue"),
         },
       ]
-    },
-
-
-    {
-      path: "/:pathMatch(.*)*",
-      name: "404",
-      component: () => import("@/views/NotFoundView.vue"),
-    },
+    }
   ],
 });
 
-// console.log({ routes: JSON.stringify(router.getRoutes()) });
-
-// router.
-//   beforeEach((to, from, next) => {
-//     const store = useAuthStore()
-//     if (to.meta.requiresAuth && !store.isAuthenticated) {
-//       next({
-//         name: 'login'
-//       })
-//     } else {
-//       next()
-//     }
-//   })
 
 export default router;

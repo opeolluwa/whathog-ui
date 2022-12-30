@@ -1,13 +1,9 @@
 <script lang="ts">
 import { defineComponent } from "vue";
-import greetings from "./greetings";
 import { Icon } from "@iconify/vue";
-import { useAuthStore } from "@/stores/auth";
-import { mapActions, mapState } from "pinia";
 export default defineComponent({
   name: "DashboardHeader",
   data: () => ({
-    greetings,
     //get the notification and messages from the store
     notifications: [],
     messages: [],
@@ -16,32 +12,19 @@ export default defineComponent({
     Icon,
   },
   methods: {
-    //control the nav bar visibility
-    toggleSidebar() {},
-    ...mapActions(useAuthStore, ["logoutRequest"]),
+
   },
   computed: {
-    //get the user from the store
-    ...mapState(useAuthStore, { user: "userInformation" }),
-    username() {
-      return this.user?.username || "username";
-    },
 
-    //get the user profile picture from the store, if not present use the default avatar
-    userAvatar() {
-      const avatar =
-        this.user?.avatar || "@/assets/img/illustration/default_user.png";
-      return String(avatar);
-    },
+
+
     // the current route name
     currentRouteName() {
       const route = this.$route.name;
-      return String(route).replaceAll("-", " ") || "360 Devs";
+      return String(route).replaceAll("-", " ") || "Home";
     },
     // the user fullname
-    fullname() {
-      return this.user?.fullname || "Default user";
-    },
+
   },
 });
 </script>
@@ -51,28 +34,27 @@ export default defineComponent({
     <div class="header__nav__mobile">
       <Icon icon="mdi:menu" @click="$emit('open-sidebar')" />
       <div id="current__route">
-        <div >{{ currentRouteName }}</div>
+        <div>{{ currentRouteName }}</div>
       </div>
     </div>
 
     <!--greetings-->
     <div class="header__nav__desktop">
       <h2>
-        Hi <span style="text-transform: capitalize">{{ username }} </span> 😊
+        <!-- Hi <span style="text-transform: capitalize">{{ username }} </span> 😊 -->
       </h2>
-      <small>{{ greetings }}</small>
     </div>
 
     <!--account controls-->
     <div class="account__controls">
       <div class="icons">
-       
+
       </div>
       <!--account option-->
       <div class="account__options">
         <!--the user image or use the default-->
         <div class="avatar">
-          <img src="@/assets/img/illustration/default_user.png" alt="user" />
+          <!-- <img src="@/assets/img/illustration/default_user.png" alt="user" /> -->
           <div></div>
         </div>
       </div>
@@ -206,6 +188,7 @@ sup {
   .header__nav__mobile {
     display: flex;
     align-items: center;
+    min-height: 32px;
     /* column-gap: -15px; */
   }
 
