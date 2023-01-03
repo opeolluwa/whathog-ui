@@ -28,8 +28,6 @@ export default defineComponent({
 
 <style scoped>
 h1 {
-  text-align: center;
-  margin-top: 20px;
   margin-top: 0;
   padding: 0;
 }
