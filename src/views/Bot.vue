@@ -112,7 +112,6 @@ export default defineComponent({
               </div>
             </div>
           </template>
-
           <template v-if="message.user === 'bot'">
             <div class="message__component">
               <Icon icon="mdi:robot-outline" class="bot__icon" />
@@ -125,16 +124,13 @@ export default defineComponent({
           </template>
         </div>
         <div class="dot-pulse" v-show="awaitingBotResponse" style="margin-left: 15px; margin-top: 0;"></div>
-
       </div>
       <form action="" id="message__box" @submit.prevent="sendMessage">
         <div id="input__field">
           <input type="text" placeholder="type a message" v-model="newMessage">
           <Icon icon="mdi:send" id="send__icon" @click="sendMessage" />
-
         </div>
       </form>
-
     </main>
   </div>
 </template>
