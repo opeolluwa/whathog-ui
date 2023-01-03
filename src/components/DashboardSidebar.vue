@@ -20,14 +20,15 @@ export default defineComponent({
         icon: "mdi:help-circle-outline",
         path: "faq",
       },
+   
       {
-        name: "About",
-        icon: "mdi:information-outline",
-        path: "about",
+        name: "NGO",
+        icon: "mdi:handshake",
+        path: "support",
       },
 
       {
-        name: "Chat with a Bot",
+        name: "ChatBot",
         icon: "mdi:robot-outline",
         path: "bot",
       },
