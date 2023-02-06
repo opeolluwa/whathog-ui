@@ -1,21 +1,30 @@
 import { createApp } from "vue";
 import { createPinia } from "pinia";
 
+//supporting library
 import App from "./App.vue";
 import router from "./router";
 
+//Vuetify
+import 'vuetify/styles'
+import { createVuetify } from 'vuetify'
+import * as components from 'vuetify/components'
+import * as directives from 'vuetify/directives'
+
+//third party libraries
 import "./assets/main.css";
 import "animate.css";
 import "highlight.js/styles/github.css";
-
-import "./axios.config";
-import { useAuthStore } from "@/stores/auth";
-
 import Toast, { type PluginOptions } from "vue-toastification";
 import "vue-toastification/dist/index.css";
 const toastOptions: PluginOptions = {
   // You can set your default options here
 };
+//in app configuration
+import "./axios.config";
+import { useAuthStore } from "@/stores/auth";
+
+
 
 import vGoogleTranslate from "v-google-translate";
 

@@ -8,7 +8,29 @@ const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
-      path: "/",
+      path: '/',
+      name: 'Auth',
+      component: () => import('@/views/auth/AuthLayout.vue'),
+      children: [
+        {
+          path: '',
+          name: 'Login',
+          component: () => import('@/views/auth/LoginView.vue'),
+        },
+        {
+          path: 'sign-up',
+          name: 'Signup',
+          component: () => import('@/views/auth/SignUpView.vue'),
+        },
+        {
+          path: '/forgotten-password',
+          name: 'AccountReset',
+          component: () => import('@/views/auth/AccountResetView.vue'),
+        },
+      ]
+    },
+    {
+      path: "/home",
       component: BaseLayout,
       children: [
         {
