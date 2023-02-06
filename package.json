@@ -23,6 +23,7 @@
     "@capacitor/preferences": "^4.0.1",
     "@capacitor/splash-screen": "^4.1.1",
     "@capacitor/status-bar": "^4.0.1",
+    "@chenfengyuan/vue-countdown": "^2.1.0",
     "@growthbunker/vuedarkmode": "^0.5.56",
     "@vueform/toggle": "^2.1.2",
     "animate.css": "^4.1.1",

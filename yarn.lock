@@ -1032,6 +1032,11 @@
   resolved "https://registry.yarnpkg.com/@capacitor/status-bar/-/status-bar-4.1.1.tgz#5b9a1acbe5efb30158e35be7a5ef7ffaaadaf804"
   integrity sha512-3wosxMD1XuIFz88+c2GdVEHSJV6u7suOeKQjyWf3zf9eFr622Sg+udZqDbC0dtTWXw97BWyCjv3r1EYJw7XnIA==
 
+"@chenfengyuan/vue-countdown@^2.1.0":
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/@chenfengyuan/vue-countdown/-/vue-countdown-2.1.0.tgz#97d1c9ae755ef11fa28ce30af407b8c8177fc40c"
+  integrity sha512-Emk66FULb1Q31tz7sLRvQIBMW8k46EeQu2pv4DUppPUNSmpp+5bGLQLNLLfwohL3r6a4dzqB5PGSmu8P5nD4qQ==
+
 "@esbuild/android-arm@0.15.18":
   version "0.15.18"
   resolved "https://registry.yarnpkg.com/@esbuild/android-arm/-/android-arm-0.15.18.tgz#266d40b8fdcf87962df8af05b76219bc786b4f80"
