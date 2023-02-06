@@ -21,7 +21,8 @@ export default defineComponent({
     form: {
       email: "",
       password: "",
-      fullname: "",
+      firstname: "",
+      lastname: "",
     },
     isLoading: false,
     //destructure the api response into this variable
@@ -32,11 +33,12 @@ export default defineComponent({
     // and then set the api response message to the response message
     async signUp() {
       this.isLoading = true;
-      const { email, password, fullname } = this.form;
+      const { email, password, firstname, lastname } = this.form;
       try {
         const { data: response } = await axios.post("/auth/sign-up", {
           email,
-          fullname,
+          firstname,
+          lastname,
           password,
         });
         console.log(JSON.stringify(response));
@@ -86,23 +88,19 @@ export default defineComponent({
       <div>
         <div class="title">
           <h1>Sign Up</h1>
-          <p class="sub__her__text">Proceed with your social account</p>
+          <p class="sub__her__text">Create an account to begin</p>
         </div>
 
         <!--social icons-->
-        <SocialAccountAuth />
-        <small class="continue__with__email d-none">
-          <span class="divider__line"> ------------------ </span>
-          <small> continue with email </small>
-          <span class="divider__line"> ---------------- </span>
-        </small>
+
 
         <form action="" method="post" @submit.prevent="signUp">
-          <BaseTextInput placeholder="Jane Doe" label="fullname" v-model="form.fullname" type="text" class="field" />
+          <BaseTextInput placeholder="Jane" label="firstname" v-model="form.firstname" type="text" class="field" />
+          <BaseTextInput placeholder="Doe" label="lastname" v-model="form.lastname" type="text" class="field" />
           <!--form field email-->
           <BaseTextInput placeholder="jane@mailer.com" label="email" v-model="form.email" type="email" class="field" />
           <!--form field password-->
-          <BaseTextInput placeholder="password" type="password" label="password" v-model="form.password"
+          <BaseTextInput placeholder="**********" type="password" label="password" v-model="form.password"
             class="field" />
           <!--form field submit, change color to black while waiting for response from server-->
           <BaseButton text="" :disabled="disabledState">
@@ -248,7 +246,7 @@ button,
     justify-content: center;
     align-content: center;
     column-gap: 15px;
-    margin-top: 2.75rem;
+    margin-top: .75rem;
   }
 
   .form__field,

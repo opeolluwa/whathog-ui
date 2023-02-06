@@ -8,9 +8,13 @@ const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
-      path: '/',
+      path: '',
+      name: 'splash',
+      component: () => import('@/views/SplashScreen.vue'),
+    },
+    {
+      path: '/auth',
       name: 'auth',
-      alias: '/auth',
       component: () => import('@/views/auth/AuthLayout.vue'),
       children: [
         {
