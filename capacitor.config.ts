@@ -1,7 +1,7 @@
 import { CapacitorConfig } from "@capacitor/cli";
 
 const config: CapacitorConfig = {
-  appId: "com.nitride.app",
+  appId: "com.whathog.app",
   appName: "WhatHog",
   webDir: "./dist",
   bundledWebRuntime: false,

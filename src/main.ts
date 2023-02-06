@@ -10,6 +10,10 @@ import 'vuetify/styles'
 import { createVuetify } from 'vuetify'
 import * as components from 'vuetify/components'
 import * as directives from 'vuetify/directives'
+const vuetify = createVuetify({
+  components,
+  directives,
+})
 
 //third party libraries
 import "./assets/main.css";
@@ -26,10 +30,6 @@ import { useAuthStore } from "@/stores/auth";
 
 
 
-import vGoogleTranslate from "v-google-translate";
-
-//google auth
-import GoogleLogin from "vue3-google-login";
 // capacitor status bar
 import { StatusBar, Style } from "@capacitor/status-bar";
 const statusBarOption = {
@@ -88,12 +88,7 @@ app.use(createPinia());
 app.use(router);
 app.use(timeago, timeagoOptions);
 app.use(Toast, toastOptions);
-app.use(vGoogleTranslate);
-// app.use(VueDarkMode)
-app.use(GoogleLogin, {
-  clientId:
-    "922542500824-bssqki67kdmfpcf11sapl8ignghgvu2d.apps.googleusercontent.com",
-});
+app.use(vuetify)
 app.mount("#app");
 
 //export the auth store to make it accessible globally

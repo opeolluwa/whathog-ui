@@ -9,24 +9,30 @@ const router = createRouter({
   routes: [
     {
       path: '/',
-      name: 'Auth',
+      name: 'auth',
+      alias: '/auth',
       component: () => import('@/views/auth/AuthLayout.vue'),
       children: [
         {
           path: '',
-          name: 'Login',
+          name: 'login',
           component: () => import('@/views/auth/LoginView.vue'),
         },
         {
           path: 'sign-up',
-          name: 'Signup',
+          name: 'sign-up',
           component: () => import('@/views/auth/SignUpView.vue'),
         },
         {
-          path: '/forgotten-password',
-          name: 'AccountReset',
-          component: () => import('@/views/auth/AccountResetView.vue'),
+          path: 'forgotten-password',
+          name: 'forgotten-password',
+          component: () => import('@/views/auth/PasswordResetView.vue'),
         },
+        {
+          path: "confirm-otp",
+          name: "confirm-otp",
+          component: () => import("@/views/auth/ConfirmOtpView.vue")
+        }
       ]
     },
     {
