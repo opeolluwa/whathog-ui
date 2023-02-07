@@ -54,6 +54,7 @@ export default defineComponent({
     //exec the login action coming from the store mapped actions
     login() {
       this.makeLoginRequest(this.form);
+      this.$router.push({ name: "home" });
     },
 
     //go to home, debug only
@@ -77,7 +78,7 @@ export default defineComponent({
           <p class="sub__hero__text">Please provide your Credentials.</p>
         </div>
         <!--social login buttons-->
-        <SocialAccountAuth  />
+        <SocialAccountAuth />
         <!-- <GoogleLogin :callback="callback" /> -->
         <form action="" method="post" @submit.prevent="login">
           <!--form field email-->

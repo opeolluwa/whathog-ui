@@ -44,6 +44,9 @@ export const useAuthStore = defineStore("authStore", {
           email,
           password,
         });
+
+        console.log(JSON.stringify(response));
+        // return
         console.log({ token: response.data.token });
         if (response.success) {
           this.isLoading = false;
@@ -53,8 +56,9 @@ export const useAuthStore = defineStore("authStore", {
             key: "authorizationToken",
             value: response.data.token,
           });
+
           //redirect to the dashboard
-          this.getUserInformation(response.data.token);
+          // this.getUserInformation(response.data.token);
         } else {
           this.isLoading = false;
           this.apiResponseMsg = response.message;
@@ -63,12 +67,15 @@ export const useAuthStore = defineStore("authStore", {
         }
       } catch (error: any) {
         this.isLoading = false;
-        const { data: response } = error.response;
-        if (!response.success) {
+        /* this.isLoading = false;
+        const { data: response } = error.response; */
+        /* if (!response.success) {
           this.apiResponseMsg = response.message;
           appToastComponent.error(response.message);
-        }
-        // console.log(JSON.stringify(error.response.data));
+        } */
+        // this.apiResponseMsg = error.message;
+        // appToastComponent.error(error.message);
+        console.log(JSON.stringify(error));
       }
     },
 
