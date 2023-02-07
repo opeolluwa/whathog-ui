@@ -63,7 +63,7 @@ export default defineComponent({
     },
     //confirm otp
     async confirmOtp() {
-      /**
+      /*
        * gt the otp from the data object
        * get the bearer token from stored in shared preferences
        * pass it to axios show loading state

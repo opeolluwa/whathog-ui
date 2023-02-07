@@ -93,7 +93,18 @@ export default defineComponent({
 <template>
   <nav>
     <div id="nav__content">
-
+    <!-- nave header-->
+    <div id="nav__header">
+      <div id="avatar">
+        <!--icon-->
+        <img src="@/assets/illustrations/default_user.png" alt="avatar" @click="goToProfile" />
+        <!---name and email-->
+        <div id="user">
+          <h3>Opeoluwa</h3>
+          <small>adeoye@mailer.com</small>
+        </div>
+      </div>
+    </div>
       <div id="routes">
         <!--the links-->
         <div v-for="route in routes.sort()" :key="route.name">
