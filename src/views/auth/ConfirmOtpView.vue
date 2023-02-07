@@ -74,9 +74,9 @@ export default defineComponent({
         const bearerToken = await getStoredData("confirm-account-token");
         this.isLoading = true;
         const { data: response } = await axios.post(
-          "/auth/verify-email",
+          "/auth/verify-otp",
           {
-            token: otp,
+            otp,
           },
           {
             headers: {
@@ -125,33 +125,15 @@ export default defineComponent({
         <small class="error"> {{ apiResponseMsg }}</small>
         <form action="" method="post" @submit.prevent="confirmOtp">
           <!--form field email-->
-          <BaseTextInput
-            placeholder="XXXXXX"
-            label="Token"
-            v-model="form.otp"
-            type="text"
-            :maxlength="6"
-            class="field"
-            :input-attributes="inputFieldProps"
-            :disabled="counting || isLoading"
-          />
+          <BaseTextInput placeholder="XXXXXX" label="Token" v-model="form.otp" type="text" :maxlength="6" class="field"
+            :input-attributes="inputFieldProps" :disabled="counting || isLoading" />
           <!--form field password-->
           <BaseButton text="" :disabled="disabledState">
             <span v-show="!isLoading">Proceed</span>
-            <Spinner
-              :animation-duration="1000"
-              :size="30"
-              :color="'#ffffff'"
-              v-show="isLoading"
-            />
+            <Spinner :animation-duration="1000" :size="30" :color="'#ffffff'" v-show="isLoading" />
           </BaseButton>
-          <VueCountdown
-            v-if="counting"
-            :time="60000"
-            v-slot="{ seconds }"
-            @end="onCountdownEnd"
-            style="color: var(--secondary)"
-          >
+          <VueCountdown v-if="counting" :time="60000" v-slot="{ seconds }" @end="onCountdownEnd"
+            style="color: var(--secondary)">
             <small>
               Request new OTP after
               <strong style="font-size: 13px">{{ seconds }}</strong> seconds.
@@ -159,21 +141,13 @@ export default defineComponent({
           </VueCountdown>
           <button v-else class="goto__sign__up">
             Didn&apos;t receive any token?
-            <small
-              class="emphasis"
-              style="font-size: 13px"
-              @click="startCountdown"
-              >request new
+            <small class="emphasis" style="font-size: 13px" @click="startCountdown">request new
             </small>
           </button>
         </form>
         <button class="goto__sign__up">
           Go back
-          <RouterLink
-            :to="{ name: 'sign-up' }"
-            class="emphasis"
-            style="font-size: 13px"
-            >Sign Up
+          <RouterLink :to="{ name: 'sign-up' }" class="emphasis" style="font-size: 13px">Sign Up
           </RouterLink>
         </button>
       </div>
@@ -210,20 +184,20 @@ export default defineComponent({
 }
 
 /**the background container */
-#password__reset__confirm__otp__page .container > div:first-child {
+#password__reset__confirm__otp__page .container>div:first-child {
   background-image: url("@/assets/img/bg/login-bg.svg");
   background-size: cover;
   background-position: center center;
 }
 
-#password__reset__confirm__otp__page .container > div:last-child {
+#password__reset__confirm__otp__page .container>div:last-child {
   padding: 100px 0;
   display: flex;
   justify-content: center;
   flex-direction: column;
 }
 
-#password__reset__confirm__otp__page .container > div:last-child h1 + small {
+#password__reset__confirm__otp__page .container>div:last-child h1+small {
   margin-bottom: 30px;
 }
 
@@ -272,11 +246,11 @@ button,
     /* min-height: 100vh; */
   }
 
-  #password__reset__confirm__otp__page .container > div:first-child {
+  #password__reset__confirm__otp__page .container>div:first-child {
     display: none;
   }
 
-  #password__reset__confirm__otp__page .container > div:last-child {
+  #password__reset__confirm__otp__page .container>div:last-child {
     padding: 0;
     display: flex;
     flex-direction: column;
@@ -286,11 +260,7 @@ button,
     place-content: center;
   }
 
-  #password__reset__confirm__otp__page
-    .container
-    > div:last-child
-    h1
-    + small.error {
+  #password__reset__confirm__otp__page .container>div:last-child h1+small.error {
     margin-bottom: 35px;
   }
 
