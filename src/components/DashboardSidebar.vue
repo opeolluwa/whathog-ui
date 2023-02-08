@@ -1,7 +1,7 @@
 <script lang="ts">
 import { Icon } from "@iconify/vue";
 import { defineComponent } from "vue";
-import { App } from '@capacitor/app';
+import { App } from "@capacitor/app";
 export default defineComponent({
   name: "AppNavigation",
   components: {
@@ -20,7 +20,7 @@ export default defineComponent({
         icon: "mdi:help-circle-outline",
         path: "faq",
       },
-   
+
       {
         name: "NGO",
         icon: "mdi:handshake",
@@ -66,7 +66,6 @@ export default defineComponent({
     }
   },
   methods: {
-
     async exitApp() {
       await App.exitApp();
     },
@@ -93,26 +92,35 @@ export default defineComponent({
 <template>
   <nav>
     <div id="nav__content">
-    <!-- nave header-->
-    <div id="nav__header">
-      <div id="avatar">
-        <!--icon-->
-        <img src="@/assets/illustrations/default_user.png" alt="avatar" @click="goToProfile" />
-        <!---name and email-->
-        <div id="user">
-          <h3>Opeoluwa</h3>
-          <small>adeoye@mailer.com</small>
+      <!-- nave header-->
+      <div id="nav__header">
+        <div id="avatar">
+          <!--icon-->
+          <img
+            src="@/assets/illustrations/default_user.png"
+            alt="avatar"
+            @click="goToProfile"
+          />
+          <!---name and email-->
+          <div id="user">
+            <h3>Opeoluwa</h3>
+            <small>adeoye@mailer.com</small>
+          </div>
         </div>
       </div>
-    </div>
       <div id="routes">
         <!--the links-->
         <div v-for="route in routes.sort()" :key="route.name">
           <!-- <hr class=divider> -->
-          <RouterLink :to="{ name: route.path }" class="link__item" :class="[
-  route.name === currentRouteName ? 'active' : '',
-  'capitalize',
-]" @click="closeSidebar">
+          <RouterLink
+            :to="{ name: route.path }"
+            class="link__item"
+            :class="[
+              route.name === currentRouteName ? 'active' : '',
+              'capitalize',
+            ]"
+            @click="closeSidebar"
+          >
             <Icon :icon="route.icon" />
             <span>{{ route.name }}</span>
           </RouterLink>

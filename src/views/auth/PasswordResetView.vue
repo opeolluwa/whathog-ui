@@ -3,6 +3,11 @@ import BaseTextInputVue from "@/components/BaseTextInput.vue";
 import BaseButtonVue from "@/components/BaseButton.vue";
 import { defineComponent } from "vue";
 import Spinner from "@/components/Spinner.vue";
+import { useToast } from "vue-toastification";
+import axios from "axios";
+import { storeData } from "@/main";
+const appToastComponent = useToast();
+
 export default defineComponent({
   name: "AuthView",
   components: {
@@ -34,9 +39,43 @@ export default defineComponent({
   },
   methods: {
     //request password reset
-    requestPasswordReset() {
-      console.log("requested");
-      this.$router.push({ name: "confirm-otp" });
+    async requestPasswordReset() {
+      this.isLoading = true;
+      const { email } = this.form;
+      try {
+        const { data: response } = await axios.post(
+          "/auth/request-password-reset",
+          {
+            email,
+          }
+        );
+        console.log(JSON.stringify(response));
+        if (response.success) {
+          appToastComponent.success(response.message);
+          // route to confirm otp page
+          setTimeout(() => {
+            this.$router.push({ name: "confirm-reset-otp" });
+          }, 200);
+          //store the otp in preferences
+          storeData({
+            key: "confirm-account-token",
+            value: response.data.token,
+          });
+        } else {
+          appToastComponent.error(response.message);
+          /// route to the confirm-otp screen after 200ms wc is the delay of toast above
+        }
+        this.apiResponseMsg = response.message;
+        this.isLoading = false;
+        return;
+      } catch (error: any) {
+        this.isLoading = false;
+        const { data: response } = error.response;
+        if (!response.success) {
+          this.apiResponseMsg = response.message;
+          appToastComponent.error(response.message);
+        }
+      }
     },
     goBack() {
       this.$router.go(-1);

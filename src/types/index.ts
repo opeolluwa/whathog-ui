@@ -1,12 +1,12 @@
 export interface FaqInterface {
-    answer: string,
-    question: string
+  answer: string;
+  question: string;
 }
 
 export interface NgoInterface {
-    name: string,
-    website: string,
-    address: string,
-    email: string,
-    contact: string
+  name: string;
+  website: string;
+  address: string;
+  email: string;
+  contact: string;
 }

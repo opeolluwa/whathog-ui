@@ -11,15 +11,16 @@ export default defineComponent({
   },
   data: () => ({
     showModal: false,
-    greeting
+    greeting,
   }),
   methods: {
     keelItWithFire() {
-      let target =
-        document.querySelector(".sithLord") as unknown as HTMLElement
+      let target = document.querySelector(
+        ".sithLord"
+      ) as unknown as HTMLElement;
       target.style.display = "none";
-    }
-  }
+    },
+  },
 });
 </script>
 
@@ -27,10 +28,8 @@ export default defineComponent({
   <h1>
     {{ greeting }}
   </h1>
-  <p class="sub-her">
-    What would you like to do?
-  </p>
-  <img src="@/assets/hero.svg" alt="illustration">
+  <p class="sub-her">What would you like to do?</p>
+  <img src="@/assets/hero.svg" alt="illustration" />
   <AppFab icon="mdi:robot-outline" route="bot" />
 </template>
 
@@ -47,6 +46,6 @@ p.sub-hero-text {
   font-weight: 400;
   margin-top: 0;
   padding: 0;
-  color: #ccc
+  color: #ccc;
 }
 </style>

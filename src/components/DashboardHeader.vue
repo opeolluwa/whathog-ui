@@ -11,20 +11,14 @@ export default defineComponent({
   components: {
     Icon,
   },
-  methods: {
-
-  },
+  methods: {},
   computed: {
-
-
-
     // the current route name
     currentRouteName() {
       const route = this.$route.name;
       return String(route).replaceAll("-", " ") || "Home";
     },
     // the user fullname
-
   },
 });
 </script>
@@ -47,9 +41,7 @@ export default defineComponent({
 
     <!--account controls-->
     <div class="account__controls">
-      <div class="icons">
-
-      </div>
+      <div class="icons"></div>
       <!--account option-->
       <div class="account__options">
         <!--the user image or use the default-->

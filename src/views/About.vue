@@ -1,7 +1,8 @@
 <template>
   <h1>WhatHog</h1>
   <p>
-    A bilingual mobile application on creating awareness and prevention of child abuse
+    A bilingual mobile application on creating awareness and prevention of child
+    abuse
   </p>
 </template>
 
@@ -15,13 +16,12 @@ export default defineComponent({
 });
 </script>
 
-
 <style scoped>
 h1 {
   margin-bottom: 12px;
 }
 
 p {
-  color: var(--secondary)
+  color: var(--secondary);
 }
 </style>

@@ -88,7 +88,7 @@ export default defineComponent({
 
         // if there is a success response to to login else fire error toast
         if (response.success) {
-          this.$router.push({ name: "login" });
+          this.$router.push({ name: "set-new-password" });
           appToastComponent.success(response.message);
           return;
         } else {

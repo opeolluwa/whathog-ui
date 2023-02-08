@@ -12,7 +12,6 @@
   margin-top: 10px;
   padding: 7.5px;
   border-radius: 4px;
- 
 }
 </style>
 

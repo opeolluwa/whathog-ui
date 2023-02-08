@@ -18,11 +18,11 @@ export default defineComponent({
   name: "Faq",
   components: {
     Icon,
-    AppListItem
+    AppListItem,
   },
   data: () => ({
-    faqs: faqs as Array<FaqInterface>
-  })
+    faqs: faqs as Array<FaqInterface>,
+  }),
 });
 </script>
 

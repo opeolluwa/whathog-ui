@@ -4,16 +4,17 @@ import { createPinia } from "pinia";
 //supporting library
 import App from "./App.vue";
 import router from "./router";
+import vGoogleTranslate from "v-google-translate";
 
 //Vuetify
-import 'vuetify/styles'
-import { createVuetify } from 'vuetify'
-import * as components from 'vuetify/components'
-import * as directives from 'vuetify/directives'
+import "vuetify/styles";
+import { createVuetify } from "vuetify";
+import * as components from "vuetify/components";
+import * as directives from "vuetify/directives";
 const vuetify = createVuetify({
   components,
   directives,
-})
+});
 
 //third party libraries
 import "./assets/main.css";
@@ -27,8 +28,6 @@ const toastOptions: PluginOptions = {
 //in app configuration
 import "./axios.config";
 import { useAuthStore } from "@/stores/auth";
-
-
 
 // capacitor status bar
 import { StatusBar, Style } from "@capacitor/status-bar";
@@ -65,7 +64,7 @@ const timeagoOptions = {
 // import { createAuth0 } from "@auth0/auth0-vue";
 const app = createApp(App);
 
-export { };
+export {};
 declare global {
   interface Navigator {
     setAppBadge: Promise<void>;
@@ -73,7 +72,7 @@ declare global {
   interface Window {
     deferredPrompt: any;
     SpeechRecognition: any;
-    webkitSpeechRecognition: any
+    webkitSpeechRecognition: any;
   }
 }
 
@@ -88,7 +87,8 @@ app.use(createPinia());
 app.use(router);
 app.use(timeago, timeagoOptions);
 app.use(Toast, toastOptions);
-app.use(vuetify)
+app.use(vuetify);
+app.use(vGoogleTranslate);
 app.mount("#app");
 
 //export the auth store to make it accessible globally
