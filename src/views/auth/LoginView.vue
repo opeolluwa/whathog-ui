@@ -54,7 +54,7 @@ export default defineComponent({
     //exec the login action coming from the store mapped actions
     login() {
       this.makeLoginRequest(this.form);
-      this.$router.push({ name: "home" });
+      // this.$router.push({ name: "home" });
     },
 
     //go to home, debug only
