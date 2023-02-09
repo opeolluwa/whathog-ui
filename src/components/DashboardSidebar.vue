@@ -106,25 +106,21 @@ export default defineComponent({
       </div>
       <div id="routes">
         <!--the links-->
-        <!--  <RouterLink :to="{ name: 'home' }" class="link__item" @click="closeSidebar">
+        <RouterLink :to="{ name: 'home' }" class="link__item" @click="closeSidebar">
           <Icon icon="mdi:home-variant-outline" />
           <span>{{ $t("menu.home") }}</span>
         </RouterLink>
 
         <RouterLink :to="{ name: 'faq' }" class="link__item" @click="closeSidebar">
-          <Icon icon="mdi:home-variant-outline" />
+          <Icon icon="mdi:help-circle-outline" />
           <span>{{ $t("menu.faq") }}</span>
         </RouterLink>
 
-        <RouterLink :to="{ name: 'ngo' }" @click="closeSidebar">
+        <RouterLink :to="{ name: 'support' }" class="link__item" @click="closeSidebar">
           <Icon icon="mdi:heart-outline" />
           <span>{{ $t("menu.ngo") }}</span>
         </RouterLink>
 
-        <RouterLink :to="{ name: 'chatbot' }" @click="closeSidebar">
-          <Icon icon="mdi:robot-outline" />
-          <span>{{ $t("menu.chatbot") }}</span>
-        </RouterLink> -->
         <RouterLink :to="{ name: 'bot' }" class="link__item" @click="closeSidebar">
           <Icon icon="mdi:robot-outline" />
           <span>{{ $t("menu.chatbot") }}</span>

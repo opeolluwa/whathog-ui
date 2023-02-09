@@ -3,15 +3,15 @@ import { createI18n } from "vue3-i18n";
 const messages = {
     en: {
         menu: {
-            home: "home",
-            faq: "faq",
-            chatbot: "chatbot",
-            language: "language",
-            exit: "exit",
-            ngo: "ngo"
+            home: "Home",
+            faq: "FAQ",
+            chatbot: "Chatbot",
+            language: "Language",
+            exit: "Exit",
+            ngo: "NGO"
 
         },
-        changeLanguageHeading:"change language",
+        changeLanguageHeading:"Change Language",
         changeLanguageText: " The Mobile Application supports English and Yoruba. click the button to toggle language",
         test: "test",
         object: {
@@ -24,14 +24,14 @@ const messages = {
     },
     yo: {
         menu: {
-            home: "ile",
-            faq: "faq",
-            chatbot: "chatbot",
-            language: "ede",
-            exit: "jade",
-            ngo: "ngo"
+            home: "Ile",
+            faq: "Ibeere to gbajumo",
+            chatbot: "Chatbot",
+            language: "Yi Ede Pada",
+            exit: "Jade",
+            ngo: "NGO"
         },
-        changeLanguageHeading:"yi ede pada",
+        changeLanguageHeading:"Yi Ede Pada",
         changeLanguageText: "Ohun elo Alagbeka n ṣe atilẹyin Gẹẹsi ati Yoruba. tẹ bọtini naa lati yi ede pada",
         test: "测试",
         object: {
