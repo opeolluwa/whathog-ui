@@ -135,7 +135,6 @@ export default defineComponent({
             />
           </BaseButton>
         </form>
-        <hr />
         <!--custom install script-->
         <!-- Install button, hidden by default -->
         <small class="goto__sign__up"

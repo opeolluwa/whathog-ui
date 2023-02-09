@@ -77,7 +77,7 @@ export default defineComponent({
           <p class="sub__hero__text">Please provide your Credentials.</p>
         </div>
         <!--social login buttons-->
-        <SocialAccountAuth />
+        <SocialAccountAuth class="d-none" />
         <!-- <GoogleLogin :callback="callback" /> -->
         <form action="" method="post" @submit.prevent="login">
           <!--form field email-->
@@ -259,7 +259,7 @@ button,
     align-content: center;
     margin-bottom: 10px;
     column-gap: 15px;
-    margin-top: 2.75rem;
+    margin-top: .75rem;
   }
 
   .form__field,

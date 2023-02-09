@@ -6,6 +6,8 @@ import App from "./App.vue";
 import router from "./router";
 import vGoogleTranslate from "v-google-translate";
 
+/// traslation
+import i18n from "./i18n";
 //Vuetify
 import "vuetify/styles";
 import { createVuetify } from "vuetify";
@@ -64,7 +66,7 @@ const timeagoOptions = {
 // import { createAuth0 } from "@auth0/auth0-vue";
 const app = createApp(App);
 
-export {};
+export { };
 declare global {
   interface Navigator {
     setAppBadge: Promise<void>;
@@ -89,6 +91,7 @@ app.use(timeago, timeagoOptions);
 app.use(Toast, toastOptions);
 app.use(vuetify);
 app.use(vGoogleTranslate);
+app.use(i18n);
 app.mount("#app");
 
 //export the auth store to make it accessible globally
