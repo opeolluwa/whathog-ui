@@ -15,7 +15,6 @@
   <p>{{ $t("parse", { name: "wangsw" }) }}</p>
   <p>{{ $t("parses.a", { name: "wangsw" }) }}</p>
 
-
   <AppFab icon="mdi:robot-outline" route="bot" />
 </template>
 
@@ -35,18 +34,29 @@ p.sub-hero-text {
   color: #ccc;
 }
 </style>
-<script lang="ts">
-import { useI18n } from "vue3-i18n";
-export default {
-  setup() {
-    const i18n = useI18n();
-    const setLocale = (lang: string) => {
-      i18n.setLocale(lang);
-    };
 
-    return {
-      setLocale,
-    };
+<script  >
+import { defineComponent } from "vue";
+import AppFab from "@/components/AppFab.vue";
+import "../web-speech";
+import greeting from "@/components/greetings";
+
+export default defineComponent({
+  name: "HomeView",
+  components: {
+    AppFab,
   },
-};
+  data: () => ({
+    showModal: false,
+    greeting,
+  }),
+  methods: {
+    keelItWithFire() {
+      let target = document.querySelector(
+        ".sithLord"
+      ) 
+      target.style.display = "none";
+    },
+  },
+});
 </script>
