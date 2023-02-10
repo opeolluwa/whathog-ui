@@ -1,26 +1,26 @@
 
 <template>
 
-  <h6 class="mb-7">
+  <h6 class="mb-7 d-none">
     {{ greeting }} <br /> <strong>Opeoluwa</strong>
   </h6>
 
-  <div id="card" class="elevation-4">
-    
-  </div>
-  <!-- <img src="@/assets/illustrations/splash_screen.svg" alt="ill"> -->
 
-  <button>
+  <iframe width="560" height="250" src="https://www.youtube.com/embed/M1SQue6khBA" title="YouTube video player"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    allowfullscreen></iframe>
+  <RouterLink :to="{ name: 'settings' }" id="translate">
     Change language
     <Icon icon="mdi:translate" />
-  </button>
+  </RouterLink>
 
-  <button>
-    Chat with a bit
+  <RouterLink :to="{ name: 'bot' }">
+    Chat with a bot
     <Icon icon="mdi:robot-outline" />
-  </button>
+  </RouterLink>
 
-  <AppFab icon="mdi:help-circle-outline" route="support" />
+  <AppFab icon="mdi:help-circle-outline" route="support" class="d-none" />
 </template>
 
 <style scoped>
@@ -31,20 +31,30 @@ h1 {
   padding: 0;
 }
 
-img{
+img,
+iframe {
   max-width: 100%;
+  border-radius: 12px;
 }
-button {
-  background-color: var(--background);
+
+a {
+  background-color: #101010;
   color: #f5f5f5;
   border: none;
-  border-radius: 24px;
+  border-radius: 10px;
   padding: .95rem .5rem;
   width: 100%;
   display: flex;
   justify-content: center;
   column-gap: 10px;
-  margin-top: 1.2rem;
+  margin-top: 1.45rem;
+  text-decoration: none;
+}
+
+a#translate {
+  border: 1px solid #101010;
+  background: transparent;
+  color: unset;
 }
 
 #card {

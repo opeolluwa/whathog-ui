@@ -1,19 +1,18 @@
 <template>
   <h1>Frequently Asked Questions</h1>
   <div class="faq__container">
-    <AppListItem v-for="(faq, index) in faqs" :key="index" class="faq__item">
-      <h2>{{ faq.question }}</h2>
-      <p>{{ faq.answer }}</p>
+    <AppListItem v-for="index of faqs.length " :key="index" class="faq__item">
+      <h2>{{ $t(`faqs[${index}].question`) }}</h2>
+      <p>{{ $t(`faqs[${ index }].answer`) }}</p>
     </AppListItem>
   </div>
 </template>
 
-<script lang="ts">
+<script>
 import { defineComponent } from "vue";
 import { Icon } from "@iconify/vue";
 import faqs from "@/components/faq";
 import AppListItem from "@/components/AppListItem.vue";
-import type { FaqInterface } from "@/types";
 export default defineComponent({
   name: "Faq",
   components: {
@@ -21,7 +20,7 @@ export default defineComponent({
     AppListItem,
   },
   data: () => ({
-    faqs: faqs as Array<FaqInterface>,
+    faqs,
   }),
 });
 </script>

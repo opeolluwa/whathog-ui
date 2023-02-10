@@ -111,6 +111,16 @@ export default defineComponent({
           <span>{{ $t("menu.home") }}</span>
         </RouterLink>
 
+        <RouterLink :to="{ name: 'bot' }" class="link__item" @click="closeSidebar">
+          <Icon icon="mdi:robot-outline" />
+          <span>{{ $t("menu.chatbot") }}</span>
+        </RouterLink>
+
+        <RouterLink :to="{ name: 'settings' }" class="link__item" @click="closeSidebar">
+          <Icon icon="mdi:translate" />
+          <span>{{ $t("menu.language") }}</span>
+        </RouterLink>
+
         <RouterLink :to="{ name: 'faq' }" class="link__item" @click="closeSidebar">
           <Icon icon="mdi:help-circle-outline" />
           <span>{{ $t("menu.faq") }}</span>
@@ -121,15 +131,9 @@ export default defineComponent({
           <span>{{ $t("menu.ngo") }}</span>
         </RouterLink>
 
-        <RouterLink :to="{ name: 'bot' }" class="link__item" @click="closeSidebar">
-          <Icon icon="mdi:robot-outline" />
-          <span>{{ $t("menu.chatbot") }}</span>
-        </RouterLink>
 
-        <RouterLink :to="{ name: 'settings' }" class="link__item" @click="closeSidebar">
-          <Icon icon="mdi:translate" />
-          <span>{{ $t("menu.language") }}</span>
-        </RouterLink>
+
+
 
         <!-- the last out logout button-->
         <div class="link__item" @click="exitApp" id="logout__btn">
