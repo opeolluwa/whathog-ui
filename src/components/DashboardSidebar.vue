@@ -1,7 +1,7 @@
-<script lang="ts">
+<script>
 import { Icon } from "@iconify/vue";
 import { defineComponent } from "vue";
-import { App } from '@capacitor/app';
+import { App } from "@capacitor/app";
 export default defineComponent({
   name: "AppNavigation",
   components: {
@@ -9,7 +9,7 @@ export default defineComponent({
   },
   data: () => ({
     showMobileMenu: true,
-    routes: [
+    /* routes: [
       {
         name: "Home",
         icon: "mdi:home-variant-outline",
@@ -20,10 +20,10 @@ export default defineComponent({
         icon: "mdi:help-circle-outline",
         path: "faq",
       },
-   
+
       {
         name: "NGO",
-        icon: "mdi:handshake",
+        icon: "mdi:heart-outline",
         path: "support",
       },
 
@@ -33,11 +33,11 @@ export default defineComponent({
         path: "bot",
       },
       {
-        name: "settings",
-        icon: "mdi:cog-outline",
+        name: "language",
+        icon: "mdi:translate",
         path: "settings",
       },
-    ],
+    ], */
   }),
   computed: {
     currentRouteName() {
@@ -66,7 +66,6 @@ export default defineComponent({
     }
   },
   methods: {
-
     async exitApp() {
       await App.exitApp();
     },
@@ -93,23 +92,53 @@ export default defineComponent({
 <template>
   <nav>
     <div id="nav__content">
-
+      <!-- nave header-->
+      <div id="nav__header">
+        <div id="avatar">
+          <!--icon-->
+          <img src="@/assets/illustrations/default_user.png" alt="avatar" @click="goToProfile" />
+          <!---name and email-->
+          <div id="user">
+            <h3>Opeoluwa</h3>
+            <small>adeoye@mailer.com</small>
+          </div>
+        </div>
+      </div>
       <div id="routes">
         <!--the links-->
-        <div v-for="route in routes.sort()" :key="route.name">
-          <!-- <hr class=divider> -->
-          <RouterLink :to="{ name: route.path }" class="link__item" :class="[
-  route.name === currentRouteName ? 'active' : '',
-  'capitalize',
-]" @click="closeSidebar">
-            <Icon :icon="route.icon" />
-            <span>{{ route.name }}</span>
-          </RouterLink>
-        </div>
+        <RouterLink :to="{ name: 'home' }" class="link__item" @click="closeSidebar">
+          <Icon icon="mdi:home-variant-outline" />
+          <span>{{ $t("menu.home") }}</span>
+        </RouterLink>
+
+        <RouterLink :to="{ name: 'bot' }" class="link__item" @click="closeSidebar">
+          <Icon icon="mdi:robot-outline" />
+          <span>{{ $t("menu.chatbot") }}</span>
+        </RouterLink>
+
+        <RouterLink :to="{ name: 'settings' }" class="link__item" @click="closeSidebar">
+          <Icon icon="mdi:translate" />
+          <span>{{ $t("menu.language") }}</span>
+        </RouterLink>
+
+        <RouterLink :to="{ name: 'faq' }" class="link__item" @click="closeSidebar">
+          <Icon icon="mdi:help-circle-outline" />
+          <span>{{ $t("menu.faq") }}</span>
+        </RouterLink>
+
+        <RouterLink :to="{ name: 'support' }" class="link__item" @click="closeSidebar">
+          <Icon icon="mdi:heart-outline" />
+          <span>{{ $t("menu.ngo") }}</span>
+        </RouterLink>
+
+
+
+
+
         <!-- the last out logout button-->
         <div class="link__item" @click="exitApp" id="logout__btn">
           <Icon icon="mdi:logout" />
-          <span>Exit</span>
+          <span>{{ $t("menu.exit") }}</span>
         </div>
       </div>
     </div>

@@ -4,7 +4,7 @@ import { Icon } from "@iconify/vue";
 import axios from "axios";
 export default defineComponent({
   components: {
-    Icon
+    Icon,
   },
   data: () => ({
     crumbs: ["Home", "Category", "Sub category"],
@@ -16,9 +16,9 @@ export default defineComponent({
       {
         user: "bot",
         timestamp: new Date().toLocaleTimeString(),
-        message: "Hello, I am a chatbot. How can I help you?"
+        message: "Hello, I am a chatbot. How can I help you?",
       },
-    ] as Array<any>
+    ] as Array<any>,
   }),
   methods: {
     // add message to the chat ui
@@ -26,7 +26,7 @@ export default defineComponent({
       /**
        * show loading component
        * inject the message into the UI
-       * clear the input field 
+       * clear the input field
        * send the query to the API and await response
        */
       this.awaitingBotResponse = true;
@@ -39,8 +39,8 @@ export default defineComponent({
       this.newMessage = "";
       this.messages.push(payload);
       const { data: response } = await axios.post("/bot", {
-        query
-      })
+        query,
+      });
       this.newMessage = "";
       if (response) {
         // hide loading action
@@ -53,12 +53,10 @@ export default defineComponent({
         this.messages.push({
           user: "bot",
           timestamp: new Date().toLocaleTimeString(),
-          message: response.data.reply.text.split(":")[1]
-        })
+          message: response.data.reply.text.split(":")[1],
+        });
       }
       // console.log("response ", response.data.response].data.text);
-
-
 
       console.log(JSON.stringify(payload));
 
@@ -100,10 +98,14 @@ export default defineComponent({
       <!-- the header-->
       <!--inject all views here-->
       <div>
-        <div id="conversation" v-for="message in messages" style="padding-bottom:25px">
+        <div
+          id="conversation"
+          v-for="message in messages"
+          style="padding-bottom: 25px"
+        >
           <!-- {{ messages }} -->
           <template v-if="message.user === 'me'">
-            <div class="message__component" style="flex-direction: row-reverse;">
+            <div class="message__component" style="flex-direction: row-reverse">
               <Icon icon="mdi:account" class="bot__icon" />
               <div class="message__box my__message">
                 <div class="message__content">
@@ -123,11 +125,19 @@ export default defineComponent({
             </div>
           </template>
         </div>
-        <div class="dot-pulse" v-show="awaitingBotResponse" style="margin-left: 15px; margin-top: 0;"></div>
+        <div
+          class="dot-pulse"
+          v-show="awaitingBotResponse"
+          style="margin-left: 15px; margin-top: 0"
+        ></div>
       </div>
       <form action="" id="message__box" @submit.prevent="sendMessage">
         <div id="input__field">
-          <input type="text" placeholder="type a message" v-model="newMessage">
+          <input
+            type="text"
+            placeholder="type a message"
+            v-model="newMessage"
+          />
           <Icon icon="mdi:send" id="send__icon" @click="sendMessage" />
         </div>
       </form>
@@ -145,10 +155,6 @@ main {
   height: 100vh !important;
   position: relative;
 }
-
-
-
-
 
 #send__icon {
   position: absolute;
@@ -181,8 +187,6 @@ main {
   bottom: 0px;
   left: 0;
 }
-
-
 
 #message__box input {
   width: 90%;
@@ -250,7 +254,7 @@ main {
 .message__box .message__content {
   display: flex;
   align-items: center;
-  margin-bottom: .45rem;
+  margin-bottom: 0.45rem;
   text-overflow: wrap;
 }
 

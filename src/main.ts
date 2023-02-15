@@ -1,26 +1,36 @@
 import { createApp } from "vue";
 import { createPinia } from "pinia";
 
+//supporting library
 import App from "./App.vue";
 import router from "./router";
+import vGoogleTranslate from "v-google-translate";
 
+/// traslation
+import i18n from "./i18n";
+//Vuetify
+import "vuetify/styles";
+import { createVuetify } from "vuetify";
+import * as components from "vuetify/components";
+import * as directives from "vuetify/directives";
+const vuetify = createVuetify({
+  components,
+  directives,
+});
+
+//third party libraries
 import "./assets/main.css";
 import "animate.css";
 import "highlight.js/styles/github.css";
-
-import "./axios.config";
-import { useAuthStore } from "@/stores/auth";
-
 import Toast, { type PluginOptions } from "vue-toastification";
 import "vue-toastification/dist/index.css";
 const toastOptions: PluginOptions = {
   // You can set your default options here
 };
+//in app configuration
+import "./axios.config";
+import { useAuthStore } from "@/stores/auth";
 
-import vGoogleTranslate from "v-google-translate";
-
-//google auth
-import GoogleLogin from "vue3-google-login";
 // capacitor status bar
 import { StatusBar, Style } from "@capacitor/status-bar";
 const statusBarOption = {
@@ -64,7 +74,7 @@ declare global {
   interface Window {
     deferredPrompt: any;
     SpeechRecognition: any;
-    webkitSpeechRecognition: any
+    webkitSpeechRecognition: any;
   }
 }
 
@@ -79,12 +89,9 @@ app.use(createPinia());
 app.use(router);
 app.use(timeago, timeagoOptions);
 app.use(Toast, toastOptions);
+app.use(vuetify);
 app.use(vGoogleTranslate);
-// app.use(VueDarkMode)
-app.use(GoogleLogin, {
-  clientId:
-    "922542500824-bssqki67kdmfpcf11sapl8ignghgvu2d.apps.googleusercontent.com",
-});
+app.use(i18n);
 app.mount("#app");
 
 //export the auth store to make it accessible globally

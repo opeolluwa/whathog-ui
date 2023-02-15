@@ -17,7 +17,6 @@ export default defineComponent({
     userTheme: "light-theme",
   }),
   methods: {
-
     languageSelectedHandler(info: any) {
       console.log(info);
     },
@@ -40,7 +39,10 @@ export default defineComponent({
 <template>
   <div class="container">
     <!-- the side bar-->
-    <DashboardSidebar v-show="showSidebar" @close-sidebar="showSidebar = false" />
+    <DashboardSidebar
+      v-show="showSidebar"
+      @close-sidebar="showSidebar = false"
+    />
     <main>
       <!-- the header-->
       <DashboardHeader @open-sidebar="showSidebar = !showSidebar" />

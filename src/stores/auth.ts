@@ -44,17 +44,22 @@ export const useAuthStore = defineStore("authStore", {
           email,
           password,
         });
-        console.log({ token: response.data.token });
+
+        console.log(JSON.stringify(response));
+
         if (response.success) {
           this.isLoading = false;
+          router.push({ name: "home" });
           //save the token to local storage and shared preferences
           localStorage.setItem("token", response.data.token);
           await storeData({
             key: "authorizationToken",
             value: response.data.token,
           });
+
           //redirect to the dashboard
-          this.getUserInformation(response.data.token);
+
+          // this.getUserInformation(response.data.token);
         } else {
           this.isLoading = false;
           this.apiResponseMsg = response.message;
@@ -63,12 +68,15 @@ export const useAuthStore = defineStore("authStore", {
         }
       } catch (error: any) {
         this.isLoading = false;
-        const { data: response } = error.response;
-        if (!response.success) {
+        /* this.isLoading = false;
+        const { data: response } = error.response; */
+        /* if (!response.success) {
           this.apiResponseMsg = response.message;
           appToastComponent.error(response.message);
-        }
-        // console.log(JSON.stringify(error.response.data));
+        } */
+        this.apiResponseMsg = error.message;
+        appToastComponent.error(error.response.data.message);
+        console.log(JSON.stringify(error));
       }
     },
 
@@ -124,9 +132,8 @@ export const useAuthStore = defineStore("authStore", {
         const AUTH_TOKEN_FOR_MOBILE = await getStoredData("authorizationToken");
         const { data: response } = await axios.get("/auth", {
           headers: {
-            Authorization: `Bearer ${
-              this.authorizationToken || AUTH_TOKEN_FOR_MOBILE
-            }`,
+            Authorization: `Bearer ${this.authorizationToken || AUTH_TOKEN_FOR_MOBILE
+              }`,
           },
         });
         //if the request is successful, store the data and
@@ -151,9 +158,8 @@ export const useAuthStore = defineStore("authStore", {
         const { data: response } = await axios.put("/auth/me", {
           ...payload,
           headers: {
-            Authorization: `Bearer ${
-              this.authorizationToken || AUTH_TOKEN_FOR_MOBILE
-            }`,
+            Authorization: `Bearer ${this.authorizationToken || AUTH_TOKEN_FOR_MOBILE
+              }`,
           },
         });
         //if the request is successful, store the data and
@@ -176,9 +182,8 @@ export const useAuthStore = defineStore("authStore", {
           { ...payload },
           {
             headers: {
-              Authorization: `Bearer ${
-                this.authorizationToken || AUTH_TOKEN_FOR_MOBILE
-              }`,
+              Authorization: `Bearer ${this.authorizationToken || AUTH_TOKEN_FOR_MOBILE
+                }`,
             },
           }
         );
