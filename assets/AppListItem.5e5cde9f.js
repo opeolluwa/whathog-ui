@@ -1,0 +1,1 @@
+import{_ as t,o as s,c as _,g as o}from"./index.23bbb581.js";const a={name:"AppListItem"};const c={class:"list__item"};function n(e,p,r,i,d,l){return s(),_("div",c,[o(e.$slots,"default",{},void 0,!0)])}const f=t(a,[["render",n],["__scopeId","data-v-e7fab109"]]);export{f as A};

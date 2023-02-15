@@ -67,67 +67,136 @@ if (!self.define) {
     });
   };
 }
-define(['./workbox-3589c0c5'], (function (workbox) { 'use strict';
-
-  /**
-  * Welcome to your Workbox-powered service worker!
-  *
-  * You'll need to register this file in your web app.
-  * See https://goo.gl/nhQhGp
-  *
-  * The rest of the code is auto-generated. Please don't update this file
-  * directly; instead, make changes to your Workbox build configuration
-  * and re-run your build process.
-  * See https://goo.gl/2aRDsh
-  */
+define(['./workbox-148cb7e5'], (function (workbox) { 'use strict';
 
   self.skipWaiting();
   workbox.clientsClaim();
+
   /**
    * The precacheAndRoute() method efficiently caches and responds to
    * requests for URLs in the manifest.
    * See https://goo.gl/S9QRab
    */
-
   workbox.precacheAndRoute([{
-    "url": "assets/About.164eb905.js",
+    "url": "assets/About.310aa8a7.css",
     "revision": null
   }, {
-    "url": "assets/About.b4893ac5.css",
+    "url": "assets/About.acf52f2d.js",
     "revision": null
   }, {
-    "url": "assets/Bot.5fd544b4.js",
+    "url": "assets/AppListItem.5e5cde9f.js",
     "revision": null
   }, {
-    "url": "assets/Bot.dfd46bc8.css",
+    "url": "assets/AppListItem.8ff0c17f.css",
     "revision": null
   }, {
-    "url": "assets/Faq.5063ddbd.js",
+    "url": "assets/AuthLayout.89bb4804.js",
     "revision": null
   }, {
-    "url": "assets/index.c0570343.css",
+    "url": "assets/BaseButton.3c58cd34.js",
     "revision": null
   }, {
-    "url": "assets/index.d24d19ff.js",
+    "url": "assets/BaseButton.9aaf353b.css",
     "revision": null
   }, {
-    "url": "assets/Settings.769b81e3.js",
+    "url": "assets/Bot.8a1ae71c.js",
     "revision": null
   }, {
-    "url": "assets/Settings.d37daf04.css",
+    "url": "assets/Bot.bf2ac054.css",
     "revision": null
   }, {
-    "url": "assets/web.0a2e74e1.js",
+    "url": "assets/ConfirmOtpView.88c6ad12.css",
     "revision": null
   }, {
-    "url": "assets/web.7afd2d25.js",
+    "url": "assets/ConfirmOtpView.caa075a8.js",
     "revision": null
   }, {
-    "url": "assets/web.d43b3b15.js",
+    "url": "assets/ConfirmResetPasswordOTP.c972182f.css",
+    "revision": null
+  }, {
+    "url": "assets/ConfirmResetPasswordOTP.cc27178f.js",
+    "revision": null
+  }, {
+    "url": "assets/Faq.e10fbc8d.css",
+    "revision": null
+  }, {
+    "url": "assets/Faq.e1d78cb6.js",
+    "revision": null
+  }, {
+    "url": "assets/index.0e4293b5.css",
+    "revision": null
+  }, {
+    "url": "assets/index.23bbb581.js",
+    "revision": null
+  }, {
+    "url": "assets/LoginView.4cda2e99.js",
+    "revision": null
+  }, {
+    "url": "assets/LoginView.e0ed9f0b.css",
+    "revision": null
+  }, {
+    "url": "assets/PasswordResetView.128bc287.js",
+    "revision": null
+  }, {
+    "url": "assets/PasswordResetView.d192051b.css",
+    "revision": null
+  }, {
+    "url": "assets/SetNewPasswordView.4548a134.js",
+    "revision": null
+  }, {
+    "url": "assets/SetNewPasswordView.503a671c.css",
+    "revision": null
+  }, {
+    "url": "assets/Settings.3d715829.css",
+    "revision": null
+  }, {
+    "url": "assets/Settings.c621cecd.js",
+    "revision": null
+  }, {
+    "url": "assets/SignUpView.3f634e26.css",
+    "revision": null
+  }, {
+    "url": "assets/SignUpView.bcf680e0.js",
+    "revision": null
+  }, {
+    "url": "assets/SocialAccountAuth.6b149134.css",
+    "revision": null
+  }, {
+    "url": "assets/SocialAccountAuth.c1657299.js",
+    "revision": null
+  }, {
+    "url": "assets/Spinner.29f6e7a9.js",
+    "revision": null
+  }, {
+    "url": "assets/Spinner.731170bb.css",
+    "revision": null
+  }, {
+    "url": "assets/SplashScreen.cd8827b0.js",
+    "revision": null
+  }, {
+    "url": "assets/SplashScreen.f276c480.css",
+    "revision": null
+  }, {
+    "url": "assets/Support.7da73a90.css",
+    "revision": null
+  }, {
+    "url": "assets/Support.a7e0f929.js",
+    "revision": null
+  }, {
+    "url": "assets/vue-countdown.esm.28b7ccf0.js",
+    "revision": null
+  }, {
+    "url": "assets/web.74a31314.js",
+    "revision": null
+  }, {
+    "url": "assets/web.d2a772cf.js",
+    "revision": null
+  }, {
+    "url": "assets/web.e9b0f97a.js",
     "revision": null
   }, {
     "url": "index.html",
-    "revision": "640b3de58430bba07672ba26bbc23225"
+    "revision": "773c06fecde8891f130be55cdc0d7cad"
   }, {
     "url": "registerSW.js",
     "revision": "1872c500de691dce40960bb85481de07"
