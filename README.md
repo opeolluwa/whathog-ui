@@ -1,7 +1,7 @@
 # Whathog UI
 The User Interface of a BiLIngual Mobile Application on creating awareness about child abuse
 
-
+![whathog](./whathog.jpg) 
 
 ## Getting Started
 To get started
